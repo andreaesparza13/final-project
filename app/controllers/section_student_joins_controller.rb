@@ -1,0 +1,2 @@
+class SectionStudentJoinsController < ApplicationController
+end
