@@ -1,3 +1,4 @@
 class TeacherSerializer < ActiveModel::Serializer
-  attributes :id, :name, :pronouns, :username, :password_digest
+  attributes :name, :pronouns, :username
+  has_many :sections
 end

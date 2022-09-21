@@ -1,4 +1,4 @@
 class SectionSerializer < ActiveModel::Serializer
-  attributes :id, :period, :subject
+  attributes :period, :subject
   has_one :teacher
 end

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-  resources :section_student_joins
-  resources :assignments
-  resources :sections
-  resources :students
-  resources :teachers
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :section_student_joins
+  resources :assignments, only: [:index, :show, :create, :destroy, :update]
+  resources :sections, only: [:index, :show, :create, :destroy, :update]
+  resources :students, only: [:index, :show, :create, :destroy, :update]
+  resources :teachers, only: [:index, :show, :create, :destroy, :update]
+
+  post '/login', to "sessions#create"
+  delete '/logout', to "sessions#destroy"
 end
