@@ -1,17 +1,17 @@
 
 puts "seeding teachers..."
-t1 = Teacher.create(name: "Andrea Esparza", pronouns: "she/her/hers", username: "aesparza", password_digest: "12345")
-t2 = Teacher.create(name: "Ryan Ray", pronouns: "he/him/his", username: "rray", password_digest: "12345")
-t3 = Teacher.create(name: "Emma Ensign-Church", pronouns: "she/her/hers", username: "eensignchurch", password_digest: "12345")
-t4 = Teacher.create(name: "Jeremy Myers", pronouns: "he/him/his", username: "jmyers", password_digest: "12345")
-t5 = Teacher.create(name: "Jaime Estes", pronouns: "she/her/hers", username: "jestes", password_digest: "12345")
+t1 = Teacher.create(name: "Andrea Esparza", pronouns: "she/her/hers", username: "aesparza", password: "12345", admin: true)
+t2 = Teacher.create(name: "Ryan Ray", pronouns: "he/him/his", username: "rray", password: "12345", admin: true)
+t3 = Teacher.create(name: "Emma Ensign-Church", pronouns: "she/her/hers", username: "eensignchurch", password: "12345", admin: true)
+t4 = Teacher.create(name: "Jeremy Myers", pronouns: "he/him/his", username: "jmyers", password: "12345", admin: true)
+t5 = Teacher.create(name: "Jaime Estes", pronouns: "she/her/hers", username: "jestes", password: "12345", admin: true)
 
 puts "seeding students..."
-s1 = Student.create(first_name: "Jon", last_name: "Snow", preferred_name: nil, pronouns: "he/him/his", private_pronouns: false, extra_info: "Winter is coming.", grade_level: 11, username: "jsnow", password_digest: "12345")
-s2 = Student.create(first_name: "Mickey", last_name: "Mouse", preferred_name: nil, pronouns: "he/him/his", private_pronouns: false, extra_info: "I can play the harmonica.", grade_level: 9, username: "mmouse", password_digest: "12345")
-s3 = Student.create(first_name: "Red", last_name: "Power Ranger", preferred_name: "rpowerranger", pronouns: "he/him/his", private_pronouns: true, extra_info: "I don't want to be the leader.", grade_level: 12, username: "rpowerranger", password_digest: "12345")
-s4 = Student.create(first_name: "Harry", last_name: "Styles", preferred_name: nil, pronouns: "he/they", private_pronouns: false, extra_info: "Music for a sushi restaurant.", grade_level: 11, username: "hstyles", password_digest: "12345")
-s5 = Student.create(first_name: "Derek", last_name: "Jeter", preferred_name: nil, pronouns: "he/him/his", private_pronouns: true, extra_info: "#2.", grade_level: 9, username: "djeter", password_digest: "12345")
+s1 = Student.create(first_name: "Jon", last_name: "Snow", preferred_name: nil, pronouns: "he/him/his", private_pronouns: false, extra_info: "Winter is coming.", grade_level: 11, username: "jsnow", password: "12345")
+s2 = Student.create(first_name: "Mickey", last_name: "Mouse", preferred_name: nil, pronouns: "he/him/his", private_pronouns: false, extra_info: "I can play the harmonica.", grade_level: 9, username: "mmouse", password: "12345")
+s3 = Student.create(first_name: "Red", last_name: "Power Ranger", preferred_name: "rpowerranger", pronouns: "he/him/his", private_pronouns: true, extra_info: "I don't want to be the leader.", grade_level: 12, username: "rpowerranger", password: "12345")
+s4 = Student.create(first_name: "Harry", last_name: "Styles", preferred_name: nil, pronouns: "he/they", private_pronouns: false, extra_info: "Music for a sushi restaurant.", grade_level: 11, username: "hstyles", password: "12345")
+s5 = Student.create(first_name: "Derek", last_name: "Jeter", preferred_name: nil, pronouns: "he/him/his", private_pronouns: true, extra_info: "#2.", grade_level: 9, username: "djeter", password: "12345")
 
 puts "seeding sections..."
 c1 = Section.create(period: 1, subject: "Math", teacher: t1)
