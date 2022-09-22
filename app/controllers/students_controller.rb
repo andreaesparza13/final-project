@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+   before_action :is_teacher?, only: :destroy   
 
    def index 
       render json: Student.all 

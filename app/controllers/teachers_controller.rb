@@ -1,15 +1,11 @@
 class TeachersController < ApplicationController
+   skip_before_action :authenticate_user, only: :create
 
    def index 
       render json: Teacher.all 
    end
 
    def show
-      # if current_user
-      #    render json: current_user
-      # else
-      #    render json: { error: "No current user" }, status: :unauthorized
-      # end
       teacher = Teacher.find(params[:id])
       render json: teacher.student
    end

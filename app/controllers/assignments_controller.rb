@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+   before_action :is_teacher?, only: [:update, :create, :destroy]
 
    def index 
       render json: Assignment.all 

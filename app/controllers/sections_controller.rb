@@ -1,4 +1,5 @@
 class SectionsController < ApplicationController
+   before_action :is_teacher?, only: [:create, :update, :destroy]
    
    def index 
       render json: Section.all 

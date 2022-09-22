@@ -1,8 +1,19 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 
-function NavBar() {
-  return (
+function NavBar({ currentUser, updateUser }) {
+   const [menu, setMenu] = useState(false)
+   const navigate = useNavigate()
+
+   const handleLogOut = () => {
+      fetch('logout',{
+        method: "DELETE"
+      })
+      updateUser("")
+      navigate('/login') // redirect user to home page after logging out 
+   };
+
+   return (
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-500 mb-3">
          <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
             <div className="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
@@ -20,17 +31,14 @@ function NavBar() {
                      Sign Up
                      </NavLink>
                   </li>
-                  <li className="nav-item">
-                     <NavLink to='/login' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
-                     Sign In
-                     </NavLink>
+                  <li>
+                     {currentUser ? <NavLink to='/login' onClick={handleLogOut} className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">Log Out</NavLink> : <NavLink to='/login' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">Log In</NavLink>}
                   </li>
                </ul>
             </div>
          </div>
       </nav>
-  )
+   )
 }
 
 export default NavBar
-
