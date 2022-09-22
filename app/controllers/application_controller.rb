@@ -4,10 +4,10 @@ class ApplicationController < ActionController::API
    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
    rescue_from ActiveRecord::RecordInvalid, with: :invalid_record
 
-   def current_user
-      @current_user ||= Teacher.find(session[:teacher_id])
-      # Student.find(session[:student_id])
-   end
+   # def current_user
+   #    @current_user ||= Teacher.find(session[:teacher_id])
+   #    # Student.find(session[:student_id])
+   # end
 
    private
 

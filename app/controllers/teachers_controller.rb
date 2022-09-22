@@ -5,11 +5,13 @@ class TeachersController < ApplicationController
    end
 
    def show
-      if current_user
-         render json: current_user
-      else
-         render json: { error: "No current user" }, status: :unauthorized
-      end
+      # if current_user
+      #    render json: current_user
+      # else
+      #    render json: { error: "No current user" }, status: :unauthorized
+      # end
+      teacher = Teacher.find(params[:id])
+      render json: teacher.student
    end
 
    def update

@@ -6,6 +6,6 @@ Rails.application.routes.draw do
   resources :students, only: [:index, :show, :create, :destroy, :update]
   resources :teachers, only: [:index, :show, :create, :destroy, :update]
 
-  post '/login', to "sessions#create"
-  delete '/logout', to "sessions#destroy"
+  post '/login', to: "sessions#create"
+  delete '/logout', to: "sessions#destroy"
 end
