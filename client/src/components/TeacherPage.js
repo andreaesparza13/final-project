@@ -1,9 +1,15 @@
 import React from 'react'
 
-function TeacherPage() {
+function TeacherDashboard({ teacherInfo }) {
+   // console.log(students)
+   // const allStudents = teacherInfo.map(info => console.log(info))
+   // const studentList = allStudents.map(students => console.log(students))
   return (
-    <div>TeacherPage</div>
+    <div>
+      TeacherDashboard
+
+    </div>
   )
 }
 
-export default TeacherPage
+export default TeacherDashboard

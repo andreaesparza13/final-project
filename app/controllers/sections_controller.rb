@@ -2,28 +2,32 @@ class SectionsController < ApplicationController
    before_action :is_teacher?, only: [:create, :update, :destroy]
    
    def index 
-      render json: Section.all 
+      render json: @current_user.sections
    end
 
    def show
-      section = Section.find(params[:id])
+      section = @current_user.sections.find(params[:id])
       render json: section
    end
 
    def update
-      section = Section.find(params[:id])
+      section = @current_user.sections.find(params[:id])
       section.update!(section_params)
       render json: section, status: :approved
    end
 
    def create
-      section = Section.create!(section_params)
+      section = @current_user.sections.create!(section_params)
       render json: section, status: :created
    end
 
    def destroy
-      section = Section.find(params[:id])
-      section.destroy
+      if @current_user.admin?
+         section = Section.find(params[:id])
+         section.destroy
+      else
+         render json: {error: "Not authorized"}, status: :unauthorized
+      end
    end
 
    private

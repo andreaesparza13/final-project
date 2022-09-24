@@ -1,13 +1,12 @@
 class TeachersController < ApplicationController
-   skip_before_action :authenticate_user, only: :create
+   skip_before_action :authenticate_user, only: [:create, :index]
 
    def index 
       render json: Teacher.all 
    end
 
    def show
-      teacher = Teacher.find(params[:id])
-      render json: teacher.student
+      render json: @current_user
    end
 
    def update

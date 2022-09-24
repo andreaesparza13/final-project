@@ -1,4 +1,3 @@
-
 puts "seeding teachers..."
 t1 = Teacher.create(name: "Andrea Esparza", pronouns: "she/her/hers", username: "aesparza", password: "12345", admin: true)
 t2 = Teacher.create(name: "Ryan Ray", pronouns: "he/him/his", username: "rray", password: "12345", admin: true)
@@ -24,12 +23,12 @@ c7 = Section.create(period: 6, subject: "Science", teacher: t4)
 c8 = Section.create(period: 4, subject: "Art", teacher: t5)
 
 puts "seeding assignments..."
-a1 = Assignment.create(title: "New Student Form", due_date: nil, turned_in: false, score: nil, priority: false, section: c1, student: s1)
-a2 = Assignment.create(title: "Homework 1", due_date: nil, turned_in: false, score: nil, priority: false, section: c1, student: s1)
-a3 = Assignment.create(title: "Homework 2", due_date: nil, turned_in: false, score: nil, priority: false, section: c2, student: s2)
-a4 = Assignment.create(title: "Test 1", due_date: nil, turned_in: false, score: nil, priority: false, section: c1, student: s4)
-a5 = Assignment.create(title: "Project 1", due_date: nil, turned_in: false, score: nil, priority: false, section: c8, student: s5)
-a6 = Assignment.create(title: "Test 2", due_date: nil, turned_in: false, score: nil, priority: false, section: c2, student: s3)
+a1 = Assignment.create(title: "New Student Form", due_date: Date.today, turned_in: false, score: nil, priority: false, section: c1, student: s1)
+a2 = Assignment.create(title: "Homework 1", due_date: Date.today, turned_in: false, score: nil, priority: false, section: c1, student: s1)
+a3 = Assignment.create(title: "Homework 2", due_date: Date.yesterday, turned_in: true, score: 88, priority: false, section: c2, student: s2)
+a4 = Assignment.create(title: "Test 1", due_date: Date.tomorrow, turned_in: false, score: nil, priority: true, section: c1, student: s4)
+a5 = Assignment.create(title: "Project 1", due_date: Date.tomorrow, turned_in: false, score: nil, priority: false, section: c8, student: s5)
+a6 = Assignment.create(title: "Test 2", due_date: Date.today, turned_in: false, score: nil, priority: true, section: c2, student: s3)
 
 puts "seeding join table..."
 ssj1 = SectionStudentJoin.create(section: c1, student: s1)

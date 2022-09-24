@@ -1,16 +1,14 @@
-import React, { useState } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import React, {  } from 'react'
+import { NavLink } from 'react-router-dom'
 
 function NavBar({ currentUser, updateUser }) {
-   const [menu, setMenu] = useState(false)
-   const navigate = useNavigate()
+   // const [menu, setMenu] = useState(false)
 
    const handleLogOut = () => {
-      fetch('logout',{
+      fetch('/logout',{
         method: "DELETE"
       })
       updateUser("")
-      navigate('/login') // redirect user to home page after logging out 
    };
 
    return (

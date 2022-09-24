@@ -4,14 +4,15 @@ import NavBar from "./NavBar";
 import Signup from "./Signup";
 import Login from "./Login";
 import Home from "./Home";
-import TeacherPage from "./TeacherPage";
+import TeacherDashboard from "./TeacherPage";
 import NewStudentForm from "./NewStudentForm";
 import Assignments from "./Assignments";
 
 function App() {
 
+  const [isTeacher, setIsTeacher] = useState(true)
   const [currentUser, setCurrentUser] = useState("")
-  const [students, setStudents] = useState([])
+  const [teacherSections, setTeacherSections] = useState([])
   const [errors, setErrors] = useState(false)
 
   function updateUser(user) {
@@ -19,22 +20,26 @@ function App() {
   }
 
   useEffect(() => {
-    fetchTeachers()
+    fetchTeacherSections()
+    fetchUser()
   }, [])
 
-  function fetchTeachers() {
-    fetch('teachers')
+  function fetchTeacherSections() {
+    fetch('sections')
+    .then(res => res.json())
+    .then(data => setTeacherSections(data))
+  }
+
+  function fetchUser() {
+    const endpoint = isTeacher ? 'teacher' : 'student'
+    fetch(endpoint)
     .then(res => {
       if(res.ok){
-        res.json().then(setStudents)
+        res.json().then(user => setCurrentUser(user))
       }else {
         res.json().then(data => setErrors(data.error))
       }
     })
-  }
-
-  function addNewStudent(student) {
-    setStudents(current => [...current, student])
   }
 
   if(errors) return <h1>{errors}</h1>
@@ -45,9 +50,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/signup" element={<Signup updateUser={updateUser}/>} />
-          <Route path="/login" element={<Login updateUser={updateUser}/>} />
-          <Route path="/teachers/:id" element={<TeacherPage students={students} />} />
-          <Route path="/students/new" element={<NewStudentForm addNewStudent={addNewStudent}/>} />
+          <Route path="/login" element={<Login updateUser={updateUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher}/>} />
+          <Route path="/teachers/:id" element={<TeacherDashboard teacherInfo={teacherSections} />} />
+          <Route path="/students/new" element={<NewStudentForm />} />
           <Route path="/assignments" element={<Assignments />} />
         </Routes>
     </Router>
