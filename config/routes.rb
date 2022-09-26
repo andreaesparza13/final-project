@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/new_teacher', to: "teachers#create"
   post '/login_teacher', to: "sessions#create"
   get "/teacher", to: "teachers#show"
-  
+    
   post '/new_student', to: "students#create"
   post '/login_student', to: "sessions#login_student"
   get "/student", to: "students#show"

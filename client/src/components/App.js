@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Signup from "./Signup";
 import Login from "./Login";
@@ -11,51 +11,53 @@ import Assignments from "./Assignments";
 function App() {
 
   const [isTeacher, setIsTeacher] = useState(true)
-  const [currentUser, setCurrentUser] = useState("")
+  const [currentUser, setCurrentUser] = useState(null)
   const [teacherSections, setTeacherSections] = useState([])
-  const [errors, setErrors] = useState(false)
-
-  function updateUser(user) {
-    setCurrentUser(user)
-  }
 
   useEffect(() => {
-    fetchTeacherSections()
     fetchUser()
+    fetchTeacherSections()
   }, [])
 
   function fetchTeacherSections() {
     fetch('sections')
     .then(res => res.json())
-    .then(data => setTeacherSections(data))
+    .then(data => {
+      setTeacherSections(data)
+    })
   }
 
   function fetchUser() {
-    const endpoint = isTeacher ? 'teacher' : 'student'
-    fetch(endpoint)
+    // const endpoint = isTeacher ? 'teacher' : 'student'
+    fetch('teacher')
     .then(res => {
       if(res.ok){
         res.json().then(user => setCurrentUser(user))
-      }else {
-        res.json().then(data => setErrors(data.error))
       }
     })
   }
 
-  if(errors) return <h1>{errors}</h1>
+  if (!currentUser) return (
+    <div>
+      <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      <Routes>
+          <Route path="/" element={<Home setIsTeacher={setIsTeacher} isTeacher={isTeacher} currentUser={currentUser} />}/>
+          <Route path="/signup" element={<Signup currentUser={currentUser} setCurrentUser={setCurrentUser} isTeacher={isTeacher}/>} />
+          <Route path="/login" element={<Login onLogin={setCurrentUser} isTeacher={isTeacher} />} />
+        </Routes>
+    </div>
+  )
 
   return (
-    <Router>
-        <NavBar currentUser={currentUser} updateUser={updateUser}/>
+    <div>
+        <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         <Routes>
-          <Route path="/" element={<Home />}/>
-          <Route path="/signup" element={<Signup updateUser={updateUser}/>} />
-          <Route path="/login" element={<Login updateUser={updateUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher}/>} />
-          <Route path="/teachers/:id" element={<TeacherDashboard teacherInfo={teacherSections} />} />
+          <Route path="/" element={<Home setIsTeacher={setIsTeacher} isTeacher={isTeacher} currentUser={currentUser} teacherSections={teacherSections} />}/>
+          <Route path="/teacher/:id" element={<TeacherDashboard teacherInfo={teacherSections} />} />
           <Route path="/students/new" element={<NewStudentForm />} />
           <Route path="/assignments" element={<Assignments />} />
         </Routes>
-    </Router>
+    </div>
   );
 }
 
