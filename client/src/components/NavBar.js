@@ -2,7 +2,6 @@ import React, {  } from 'react'
 import { NavLink } from 'react-router-dom'
 
 function NavBar({ currentUser, setCurrentUser }) {
-   // const [menu, setMenu] = useState(false)
 
    const handleLogOut = () => {
       fetch('/logout',{
@@ -49,17 +48,17 @@ function NavBar({ currentUser, setCurrentUser }) {
             <div className="lg:flex flex-grow items-center" id="example-navbar-warning">
                <ul className="flex flex-col lg:flex-row list-none ml-auto">
                   <li className="nav-item">
-                     <NavLink to='/' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
-                     Sections
+                     <NavLink to='/sections' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
+                     Account
                      </NavLink>
                   </li>
                   <li className="nav-item">
-                     <NavLink to='/' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
+                     <NavLink to='/assignments' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
                      Assignments
                      </NavLink>
                   </li>
                   <li className="nav-item">
-                     <NavLink to='/' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
+                     <NavLink to='/new-student-form' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
                      New Student Form
                      </NavLink>
                   </li>

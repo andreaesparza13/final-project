@@ -8,7 +8,6 @@ function Login({ onLogin, isTeacher }) {
 
    const [username, setUsername] = useState("")
    const [password, setPassword] = useState("")
-   // const [isTeacher, setIsTeacher] = useState(true)
 
    function onSubmit(e) {
       e.preventDefault()
@@ -25,7 +24,7 @@ function Login({ onLogin, isTeacher }) {
                navigate(`/`)
             })
          } else {
-            res.json().then(json => setErrors(json.errors))
+            res.json().then(json => setErrors(Object.entries(json.errors)))
          }
       })
    }
@@ -58,7 +57,7 @@ function Login({ onLogin, isTeacher }) {
             Log In
          </button>
       </form>
-      {errors ? <div>{errors}</div> : null}
+      {errors ? errors.map(error => <div> {error[0]} {error[1]} </div>) : null}   
    </div>
   )
 }

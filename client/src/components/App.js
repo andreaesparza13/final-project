@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./NavBar";
 import Signup from "./Signup";
 import Login from "./Login";
-import Home from "./Home";
+import Hello from "./Hello";
 import TeacherDashboard from "./TeacherPage";
 import NewStudentForm from "./NewStudentForm";
 import Assignments from "./Assignments";
@@ -41,7 +41,7 @@ function App() {
     <div>
       <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
-          <Route path="/" element={<Home setIsTeacher={setIsTeacher} isTeacher={isTeacher} currentUser={currentUser} />}/>
+          <Route path="/" element={<Hello setIsTeacher={setIsTeacher} isTeacher={isTeacher} currentUser={currentUser} />}/>
           <Route path="/signup" element={<Signup currentUser={currentUser} setCurrentUser={setCurrentUser} isTeacher={isTeacher}/>} />
           <Route path="/login" element={<Login onLogin={setCurrentUser} isTeacher={isTeacher} />} />
         </Routes>
@@ -52,9 +52,8 @@ function App() {
     <div>
         <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         <Routes>
-          <Route path="/" element={<Home setIsTeacher={setIsTeacher} isTeacher={isTeacher} currentUser={currentUser} teacherSections={teacherSections} />}/>
-          <Route path="/teacher/:id" element={<TeacherDashboard teacherInfo={teacherSections} />} />
-          <Route path="/students/new" element={<NewStudentForm />} />
+          <Route path="/" element={<TeacherDashboard setIsTeacher={setIsTeacher} isTeacher={isTeacher} currentUser={currentUser} teacherSections={teacherSections} />}/>
+          <Route path="/new-student-form" element={<NewStudentForm />} />
           <Route path="/assignments" element={<Assignments />} />
         </Routes>
     </div>
