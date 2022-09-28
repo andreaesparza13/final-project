@@ -1,8 +1,7 @@
 import React from 'react'
 import ClassCard from './ClassCard'
 
-function TeacherDashboard({ teacherSections, teacherInfo, setTeacherInfo }) {
-	// console.log(teacherSections)
+function TeacherDashboard({ teacherSections }) {
 
 	const classes = teacherSections.map(section => (
 		<ClassCard 
@@ -10,9 +9,6 @@ function TeacherDashboard({ teacherSections, teacherInfo, setTeacherInfo }) {
 			key = {section.id}
 			period = {section.period}
 			subject = {section.subject}
-			teacherInfo = {teacherInfo}
-			students = {section.students}
-			setTeacherInfo = {setTeacherInfo}
 		/>
 	))
 

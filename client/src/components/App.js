@@ -22,7 +22,12 @@ function App() {
 		fetchUser()
 		fetchTeacherSections()
 		fetchRoster()
+		
 	}, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+	useEffect(() => {
+		console.log(currentUser)
+	}, [currentUser])
 
 	function fetchTeacherSections() {
 		fetch('sections')
@@ -31,7 +36,7 @@ function App() {
 	}
 
 	function fetchRoster() {
-		fetch('/sections/:id/students')
+		fetch(`sections/${currentUser.id}/students`)
 		.then(res => res.json())
 		.then(data => setRoster(data))
 	}
@@ -54,7 +59,7 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />}/>
 				<Route path="/signup" element={<Signup currentUser={currentUser} setCurrentUser={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher}/>} />
-				<Route path="/login" element={<Login onLogin={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher} />} />
+				<Route path="/login" element={<Login setCurrentUser={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher} />} />
 			</Routes>
 		</div>
 	)
