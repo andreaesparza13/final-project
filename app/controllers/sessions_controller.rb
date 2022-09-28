@@ -27,4 +27,10 @@ class SessionsController < ApplicationController
     head :no_content
   end
 
+  def reset_session
+    p session 
+    @_request.reset_session
+    p session
+  end
+
 end

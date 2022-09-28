@@ -30,6 +30,12 @@ class SectionsController < ApplicationController
       end
    end
 
+   def roster
+      section = @current_user.sections.find(params[:id])
+      students = section.students
+      render json: students
+   end
+
    private
 
    def section_params

@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function Login({ onLogin, isTeacher }) {
+function Login({ setCurrentUser, isTeacher, setIsTeacher }) {
 
    const [errors, setErrors] = useState([])
-   const navigate = useNavigate()
-
    const [username, setUsername] = useState("")
    const [password, setPassword] = useState("")
+   const navigate = useNavigate()
 
    function onSubmit(e) {
       e.preventDefault()
@@ -20,7 +19,7 @@ function Login({ onLogin, isTeacher }) {
       .then(res => {
          if (res.ok) {
             res.json().then(user => {
-               onLogin(user)
+               setCurrentUser(user)
                navigate(`/`)
             })
          } else {
@@ -32,6 +31,14 @@ function Login({ onLogin, isTeacher }) {
    return (
    <div>
       <h1 className="ml-5  p-4 text-3xl font-extrabold text-slate-700">{isTeacher ? "Teacher" : "Student"} Login</h1>
+      <div className="ml-9 mt-6">
+         <button type="button"className="text-slate-500 border border-slate-500 hover:bg-slate-500 hover:text-white active:bg-slate-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 ease-linear transition-all duration-150" onClick={() => setIsTeacher(true)}>
+            Teacher
+         </button>
+         <button className="text-slate-500 border border-slate-500 hover:bg-slate-500 hover:text-white active:bg-slate-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-2 mb-1 ease-linear transition-all duration-150" type="button" onClick={() => setIsTeacher(false)}>
+            Student
+         </button>
+      </div>
       <form onSubmit={onSubmit} className="p-4 m-5">
          <div className="mb-4">
             <input 
@@ -40,7 +47,7 @@ function Login({ onLogin, isTeacher }) {
                name="username" 
                value={username} 
                onChange={e => setUsername(e.target.value)} 
-               className="px-3 py-3 placeholder-slate-400 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+               className="px-3 py-3 placeholder-slate-400 text-slate-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
             />
          </div>
          <div className="mb-4">
@@ -50,7 +57,7 @@ function Login({ onLogin, isTeacher }) {
                name="password" 
                value={password} 
                onChange={e => setPassword(e.target.value)} 
-               className="px-3 py-3 placeholder-slate-400 text-slate-600 relative bg-white bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
+               className="px-3 py-3 placeholder-slate-400 text-slate-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
             />
          </div>
          <button className="text-slate-500 border border-slate-500 hover:bg-slate-500 hover:text-white active:bg-slate-600 font-bold uppercase text-xs px-4 py-2 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="submit">

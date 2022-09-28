@@ -15,14 +15,16 @@ class ApplicationController < ActionController::API
       render json: { errors: err.record.errors.full_messages }, status: :unprocessable_entity
    end
 
-   def authenticate_user
-      @current_user ||= Teacher.find_by_id(session[:teacher_id])
-      render json: { error: "Not logged in" }, status: :unauthorized unless @current_user
+   def current_user
+      if session[:student_id] != nil
+         @current_student ||= Student.find_by_id(session[:student_id])
+      elsif session[:teacher_id] != nil
+         @current_user ||= Teacher.find_by_id(session[:teacher_id])
+      end
    end
 
-   # def is_teacher?
-   #    permitted = @current_user.admin?
-   #    render json: { error: "User does not have permission to procede." }, status: :forbidden unless permitted
-   # end
+   def authenticate_user
+      render json: { error: "Not logged in" }, status: :unauthorized unless current_user
+   end
 
 end

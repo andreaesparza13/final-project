@@ -6,7 +6,7 @@ t4 = Teacher.create(name: "Jeremy Myers", pronouns: "he/him/his", username: "jmy
 t5 = Teacher.create(name: "Jaime Estes", pronouns: "she/her/hers", username: "jestes", password: "12345", admin: true)
 
 puts "seeding students..."
-s1 = Student.create(first_name: "Jon", last_name: "Snow", preferred_name: nil, pronouns: "he/him/his", private_pronouns: false, extra_info: "Winter is coming.", grade_level: 11, username: "jsnow", password: "12345", admin: false)
+s1 = Student.create(first_name: "Jon", last_name: "Snow", preferred_name: "King in the North", pronouns: "he/him/his", private_pronouns: false, extra_info: "Winter is coming.", grade_level: 11, username: "jsnow", password: "12345", admin: false)
 s2 = Student.create(first_name: "Mickey", last_name: "Mouse", preferred_name: nil, pronouns: "he/him/his", private_pronouns: false, extra_info: "I can play the harmonica.", grade_level: 9, username: "mmouse", password: "12345", admin: false)
 s3 = Student.create(first_name: "Red", last_name: "Power Ranger", preferred_name: "rpowerranger", pronouns: "he/him/his", private_pronouns: true, extra_info: "I don't want to be the leader.", grade_level: 12, username: "rpowerranger", password: "12345", admin: false)
 s4 = Student.create(first_name: "Harry", last_name: "Styles", preferred_name: nil, pronouns: "he/they", private_pronouns: false, extra_info: "Music for a sushi restaurant.", grade_level: 11, username: "hstyles", password: "12345", admin: false)
@@ -35,7 +35,7 @@ ssj1 = SectionStudentJoin.create(section: c1, student: s1)
 ssj2 = SectionStudentJoin.create(section: c1, student: s2)
 ssj3 = SectionStudentJoin.create(section: c1, student: s3)
 ssj4 = SectionStudentJoin.create(section: c2, student: s4)
-ssj5 = SectionStudentJoin.create(section: c2, student: s4)
+ssj5 = SectionStudentJoin.create(section: c2, student: s5)
 ssj6 = SectionStudentJoin.create(section: c6, student: s5)
 ssj7 = SectionStudentJoin.create(section: c8, student: s1)
 

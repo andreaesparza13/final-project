@@ -1,13 +1,12 @@
 class StudentsController < ApplicationController
-   # before_action :is_teacher?, only: :destroy   
+   skip_before_action :authenticate_user, only: [:create, :index]
 
    def index 
       render json: Student.all 
    end
 
    def show
-      student = Student.find(params[:id])
-      render json: student
+      render json: @current_student
    end
 
    def update
@@ -25,6 +24,11 @@ class StudentsController < ApplicationController
    def destroy
       student = Student.find(params[:id])
       student.destroy
+   end
+
+   def student_gradebook
+      student = Student.find(params[:id])
+      render json: student.assignments
    end
 
    private
