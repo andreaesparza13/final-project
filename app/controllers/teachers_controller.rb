@@ -28,6 +28,11 @@ class TeachersController < ApplicationController
       teacher.destroy
    end
 
+   def teacher_sections
+      teacher = @current_user.find(params[:id])
+      render json: teacher.sections
+   end
+
    private
 
    def teacher_params

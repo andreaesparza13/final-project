@@ -16,31 +16,22 @@ function App() {
 	const [isTeacher, setIsTeacher] = useState(true)
 	const [currentUser, setCurrentUser] = useState(null)
 	const [teacherSections, setTeacherSections] = useState([])
-	const [roster, setRoster] = useState([])
+	const [cardClickId, setCardClickId] = useState(null)
+	const [students, setStudents] = useState([])
+	const [count, setCount] = useState(0)
 
 	useEffect(() => {
 		fetchUser()
 		fetchTeacherSections()
-		fetchRoster()
-		
+		// fetchRoster()
 	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-	useEffect(() => {
-		console.log(currentUser)
-	}, [currentUser])
-
 	function fetchTeacherSections() {
-		fetch('sections')
+		fetch(`sections`)
 		.then(res => res.json())
 		.then(data => setTeacherSections(data))
 	}
-
-	function fetchRoster() {
-		fetch(`sections/${currentUser.id}/students`)
-		.then(res => res.json())
-		.then(data => setRoster(data))
-	}
-
+		
 	function fetchUser() {
 		const endpoint = isTeacher ? 'teacher' : 'student'
 		fetch(endpoint)
@@ -51,7 +42,16 @@ function App() {
 				})
 			}
 		})
-	}
+	}	
+	
+	useEffect(() => {
+		if (cardClickId !== null) {
+			fetch(`sections/${cardClickId}/students`)
+			.then(res => res.json())
+			.then(data => setStudents(data))
+		}
+		console.log("stateful",cardClickId)
+	}, [cardClickId])
 
 	if (currentUser === null) return (
 		<div>
@@ -68,11 +68,11 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
 			<Routes>
-				<Route path="/" element={<TeacherDashboard setIsTeacher={setIsTeacher} isTeacher={isTeacher} currentUser={currentUser} teacherSections={teacherSections} />} />
+				<Route path="/" element={<TeacherDashboard setIsTeacher={setIsTeacher} isTeacher={isTeacher} currentUser={currentUser} teacherSections={teacherSections} setCardClickId={setCardClickId} />} />
 				<Route path="/new-student-form" element={<NewStudentForm />} />
 				<Route path="/assignments" element={<Assignments teacherSections={teacherSections} />} />
 				<Route path="/account" element={<Account currentUser={currentUser} />} />
-				<Route path="/roster" element={<Roster roster={roster} currentUser={currentUser} />} />
+				<Route path="/roster" element={<Roster currentUser={currentUser} students={students} cardClickId={cardClickId}/>} />
 			</Routes>
 		</div>
 	);
@@ -81,9 +81,9 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
 			<Routes>
-			<Route path='/' element={<StudentDashboard />} />
-			<Route path="/assignments" element={<Assignments />} />
-			<Route path="/account" element={<Account currentUser={currentUser} />} />
+				<Route path='/' element={<StudentDashboard />} />
+				<Route path="/assignments" element={<Assignments />} />
+				<Route path="/account" element={<Account currentUser={currentUser} />} />
 			</Routes>
 		</div>
 	)

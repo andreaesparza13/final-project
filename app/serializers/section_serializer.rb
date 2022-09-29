@@ -1,5 +1,5 @@
 class SectionSerializer < ActiveModel::Serializer
-  attributes :period, :subject, :id
+  attributes :period, :subject, :id, :teacher_id
   has_one :teacher
-  has_many :students, through: :section_student_joins
+  has_many :students
 end

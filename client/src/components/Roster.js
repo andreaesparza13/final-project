@@ -1,10 +1,35 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import StudentCard from './StudentCard'
 
-function Roster({ roster }) {
-   console.log(roster)
+function Roster({ students }) {
 
-   const students = roster.map(student => (
+   // const { students } = sections
+   // console.log("students",students)
+
+   // const [students, setStudents] = useState([])
+
+   // useEffect(() => {
+   //    fetch(`sections/${cardClickId}/students`)
+   //    .then(res => res.json())
+   //    .then(data => setStudents(data))
+   // }, [cardClickId])
+
+   // const studentsArr = []
+   // const section_students = sections
+   // section_students.forEach((section) => {
+   //    studentsArr.push(section.students)
+   //    console.log("section students",section.students)
+   // })
+   // console.log("student array",studentsArr)
+
+   // const sectionClicked = sections.filter((section) => { 
+   //    return section.id === cardClickId
+   // })
+
+   // console.log(sectionClicked)
+   // console.log(cardClickId)
+
+   const classRoster = students.map(student => (
       <StudentCard
          first_name = {student.first_name}
          last_name = {student.last_name}
@@ -16,10 +41,9 @@ function Roster({ roster }) {
          extra_info = {student.extra_info}
       />
    ))
-   
    return (
       <div>
-         {students}
+         {classRoster}
       </div>
    )
 }
