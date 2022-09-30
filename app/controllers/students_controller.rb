@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
    end
 
    def show
-      render json: @current_student
+      render json: @current_student, include: ["assignments"]
    end
 
    def update
