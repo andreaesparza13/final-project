@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function Signup({ onLogin, isTeacher, setIsTeacher }) {
+function Signup({ isTeacher, setIsTeacher, setCurrentUser }) {
 
    const [username, setUsername] = useState('')
    const [password, setPassword] = useState('')
@@ -21,7 +21,7 @@ function Signup({ onLogin, isTeacher, setIsTeacher }) {
        .then(res => {
            if (res.ok) {
                res.json().then(user => {
-                  onLogin(user)
+                  setCurrentUser(user)
                   navigate(`/`)
                })
            } else {

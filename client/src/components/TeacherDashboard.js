@@ -1,7 +1,15 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import ClassCard from './ClassCard'
 
-function TeacherDashboard({ teacherSections, setCardClickId }) {
+function TeacherDashboard() {
+
+	const [teacherSections, setTeacherSections] = useState([])
+
+	useEffect(() => {
+		fetch(`sections`)
+		.then(res => res.json())
+		.then(data => setTeacherSections(data))
+	}, [])
 
 	const classes = teacherSections.map(section => (
 		<ClassCard 
@@ -9,9 +17,6 @@ function TeacherDashboard({ teacherSections, setCardClickId }) {
 			id = {section.id}
 			period = {section.period}
 			subject = {section.subject}
-			students = {section.students}
-			section = {section}
-			setCardClickId = {setCardClickId}
 		/>
 	))
 

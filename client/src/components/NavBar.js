@@ -1,14 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-function NavBar({ currentUser, setCurrentUser }) {
-
-   const handleLogOut = () => {
-      fetch('/logout',{
-        method: "DELETE"
-      })
-      setCurrentUser(null)
-   };
+function NavBar({ currentUser, handleLogOut }) {
 
    if (currentUser === null) return (
       <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-500 mb-3">
@@ -63,7 +56,7 @@ function NavBar({ currentUser, setCurrentUser }) {
                      </NavLink>
                   </li>
                   <li>
-                     <NavLink to='/login' onClick={handleLogOut} className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
+                     <NavLink to='/' onClick={handleLogOut} className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
                      Log Out
                      </NavLink>
                   </li>
@@ -97,7 +90,7 @@ function NavBar({ currentUser, setCurrentUser }) {
                      </NavLink>
                   </li>
                   <li>
-                     <NavLink to='/login' onClick={handleLogOut} className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
+                     <NavLink to='/' onClick={handleLogOut} className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
                      Log Out
                      </NavLink>
                   </li>
