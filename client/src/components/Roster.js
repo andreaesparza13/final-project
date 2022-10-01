@@ -4,14 +4,18 @@ import StudentCard from './StudentCard'
 
 function Roster() {
 
-   const {section_id} = useParams()
+   const params = useParams()
+   const section_id = parseInt(params.section_id)
    const [students, setStudents] = useState([])
 
    useEffect(() => {
       fetch(`sections/${section_id}/students`)
       .then(res => res.json())
       .then(data => setStudents(data))
-   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+      console.log("section id",section_id)
+   }, [section_id]) 
+
+   console.log(students)
 
    const classRoster = students.map(student => (
          <StudentCard

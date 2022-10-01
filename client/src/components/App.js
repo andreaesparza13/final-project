@@ -13,7 +13,9 @@ import StudentDashboard from "./StudentDashboard";
 
 function App() {
 
-	const [isTeacher, setIsTeacher] = useState(true)
+	const [isTeacher, setIsTeacher] = useState(
+		localStorage.getItem('is-teacher') === 'true',
+	)
 	const [currentUser, setCurrentUser] = useState(null)
 		
 	useEffect(() => {
@@ -27,6 +29,10 @@ function App() {
 			}
 		})
 	}, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+	useEffect(() => {
+		localStorage.setItem('is-teacher', isTeacher)
+	}, [isTeacher])
 
 	function handleLogOut() {
       fetch('/logout', {
@@ -51,20 +57,13 @@ function App() {
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut}/>
 			<Routes>
 				<Route path="/" element={<TeacherDashboard currentUser={currentUser} />}>
-					{/* <Route path="roster" element={<Roster currentUser={currentUser} />} />
-					<Route path="assignments" element={<Assignments />} /> */}
-					{/* <Route path="roster" >
+					<Route path="roster" >
 						<Route path=":section_id" element={<Roster />} />
-					</Route> */}
-					{/* <Route path="roster/:section_id" element={<Roster />} /> */}
+					</Route>
 				</Route>
 				<Route path="/new-student-form" element={<NewStudentForm />} />
 				<Route path="/account" element={<Account currentUser={currentUser} />} />
-				<Route path="roster/:section_id" element={<Roster />} />
 				<Route path="/assignments" element={<Assignments isTeacher={isTeacher} currentUser={currentUser}/>} />
-				{/* <Route path="/roster" >
-					<Route path=":section_id" element={<Roster />} />
-				</Route> */}
 			</Routes>
 		</div>
 	);
@@ -74,8 +73,8 @@ function App() {
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut}/>
 			<Routes>
 				<Route path='/' element={<StudentDashboard />} />
-				<Route path="/assignments" element={<Assignments isTeacher={isTeacher} currentUser={currentUser} />} />
-				<Route path="/account" element={<Account currentUser={currentUser} />} />
+				<Route path="assignments" element={<Assignments isTeacher={isTeacher} currentUser={currentUser} />} />
+				<Route path="account" element={<Account currentUser={currentUser} />} />
 			</Routes>
 		</div>
 	)
