@@ -12,9 +12,9 @@ class TeachersController < ApplicationController
    end
 
    def update
-      teacher = Teacher.find(params[:id])
-      teacher.update!(teacher_params)
-      render json: teacher, status: :approved
+      # teacher = Teacher.find(params[:id])
+      teacher = @current_user.update!(teacher_params)
+      render json: teacher, status: :accepted
    end
 
    def create

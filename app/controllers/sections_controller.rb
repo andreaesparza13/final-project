@@ -13,7 +13,7 @@ class SectionsController < ApplicationController
    def update
       section = @current_user.sections.find(params[:id])
       section.update!(section_params)
-      render json: section, status: :approved
+      render json: section, status: :ok
    end
 
    def create

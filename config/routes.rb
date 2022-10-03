@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   get '/sections/:id/students', to: "sections#roster"
 
+  get 'students/:id/sections', to: "students#schedule"
+
   get '/sections/:id/assignments', to: "sections#teacher_gradebook"
 
   get '/students/:id/assignments', to: "students#student_gradebook"

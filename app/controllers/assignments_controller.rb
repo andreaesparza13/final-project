@@ -13,7 +13,7 @@ class AssignmentsController < ApplicationController
    def update
       assignment = Assignment.find(params[:id])
       assignment.update!(assignment_params)
-      render json: assignment, status: :approved
+      render json: assignment, status: :ok
    end
 
    def create

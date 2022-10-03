@@ -10,9 +10,9 @@ class StudentsController < ApplicationController
    end
 
    def update
-      student = Student.find(params[:id])
-      student.update!(student_params)
-      render json: student, status: :approved
+      # student = Student.find(params[:id])
+      student = @current_student.update!(student_params)
+      render json: student, status: :ok
    end
 
    def create
@@ -29,6 +29,11 @@ class StudentsController < ApplicationController
    def student_gradebook
       student = Student.find(params[:id])
       render json: student.assignments
+   end
+
+   def schedule
+      schedule = @current_student.sections.order("period")
+      render json: schedule
    end
 
    private

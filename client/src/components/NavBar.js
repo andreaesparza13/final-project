@@ -45,11 +45,11 @@ function NavBar({ currentUser, handleLogOut }) {
                      Assignments
                      </NavLink>
                   </li>
-                  <li className="nav-item">
+                  {/* <li className="nav-item">
                      <NavLink to='/new-student-form' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
                      New Student Form
                      </NavLink>
-                  </li>
+                  </li> */}
                   <li className="nav-item">
                      <NavLink to='/account' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
                      Account
@@ -80,7 +80,7 @@ function NavBar({ currentUser, handleLogOut }) {
             <div className="lg:flex flex-grow items-center" id="example-navbar-warning">
                <ul className="flex flex-col lg:flex-row list-none ml-auto">
                   <li className="nav-item">
-                     <NavLink to='/account' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
+                     <NavLink to='/edit-info' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
                      Edit Info
                      </NavLink>
                   </li>

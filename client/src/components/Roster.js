@@ -8,14 +8,16 @@ function Roster() {
    const section_id = parseInt(params.section_id)
    const [students, setStudents] = useState([])
 
+   // console.log(params)
+   // console.log("section id",section_id)
+
    useEffect(() => {
-      fetch(`sections/${section_id}/students`)
+      fetch(`/sections/${section_id}/students`)
       .then(res => res.json())
       .then(data => setStudents(data))
-      console.log("section id",section_id)
    }, [section_id]) 
 
-   console.log(students)
+   // console.log(students)
 
    const classRoster = students.map(student => (
          <StudentCard
@@ -31,7 +33,7 @@ function Roster() {
       ))
 
    return (
-      <div>
+      <div className="flex flex-wrap justify-center">
          {classRoster}
       </div>
    )
