@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 function NavBar({ currentUser, handleLogOut }) {
 
    if (currentUser === null) return (
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-500 mb-3">
+      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-500 mb-3 dark:bg-gray-800">
          <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
             <div className="lg:flex flex-grow items-center" id="example-navbar-warning">
                <NavLink to='/' className="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">
@@ -28,7 +28,7 @@ function NavBar({ currentUser, handleLogOut }) {
    )
 
    else if ("find_students" in currentUser) return (
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-500 mb-3">
+      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-500 mb-3 dark:bg-gray-800">
          <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
             <div className="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
                <NavLink to='/' className="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">
@@ -45,11 +45,6 @@ function NavBar({ currentUser, handleLogOut }) {
                      Assignments
                      </NavLink>
                   </li>
-                  {/* <li className="nav-item">
-                     <NavLink to='/new-student-form' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
-                     New Student Form
-                     </NavLink>
-                  </li> */}
                   <li className="nav-item">
                      <NavLink to='/account' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
                      Account
@@ -67,7 +62,7 @@ function NavBar({ currentUser, handleLogOut }) {
    )
 
    else if ("last_name" in currentUser) return (
-      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-500 mb-3">
+      <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-slate-500 mb-3 dark:bg-gray-800">
          <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
             <div className="w-full relative flex justify-between lg:w-auto  px-4 lg:static lg:block lg:justify-start">
                <NavLink to='/' className="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white">

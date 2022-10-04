@@ -2,14 +2,12 @@ import React, { useState } from 'react'
 
 function EditStudentInfo({ currentUser }) {
 
-	console.log(currentUser)
-
 	const [first_name, setFirstName] = useState(`${currentUser.first_name}`)
 	const [last_name, setLastName] = useState(`${currentUser.last_name}`)
 	const [pronouns, setPronouns] = useState(`${currentUser.pronouns}`)
 	const [preferred_name, setPreferredName] = useState(`${currentUser.preferred_name}`)
 	const [private_pronouns, setPrivatePronouns] = useState(`${currentUser.private_pronouns}`)
-	const [extra_info, setExtraInfo] = useState(`${currentUser.first_name}`)
+	const [extra_info, setExtraInfo] = useState(`${currentUser.extra_info}`)
 	
 	function submitEditInfo (e) {
 		e.preventDefault()
@@ -89,8 +87,8 @@ function EditStudentInfo({ currentUser }) {
 				</label>
 			</div>
 			<div className="mb-4 w-72">
-				<input 
-					type="paragraph" 
+				<textarea 
+					type="text" 
 					placeholder="Anything else you need or want your teachers to know about you" 
 					name="extra-info" 
 					value={extra_info} 

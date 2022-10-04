@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import ClassCard from './ClassCard'
+import StudentClassCard from './StudentClassCard'
 
 function StudentDashboard({ currentUser }) {
 
@@ -12,9 +12,8 @@ function StudentDashboard({ currentUser }) {
 	}, [currentUser.id])
 
 	const schedule = studentSections.map(period => (
-		<ClassCard 
+		<StudentClassCard 
 		key = {period.id}
-		id = {period.id}
 		period = {period.period}
 		subject = {period.subject}
 	/>

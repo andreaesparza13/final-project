@@ -23,7 +23,7 @@ function Account({ currentUser }) {
 	}
 
 	return (
-		<form onSubmit={editAccountInfo} className="m-2 flex flex-col justify-center items-center ml-auto mr-auto w-96 border-4 bg-white">
+		<form onSubmit={editAccountInfo} className="m-2 flex flex-col justify-center items-center ml-auto mr-auto w-96 border-4 rounded bg-white">
 			<h1 className="p-4 text-xl font-extrabold text-slate-700">Update Personal Information</h1>
 			<div className="mb-4 w-72">
 				<input 

@@ -10,7 +10,7 @@ function Assignments({ isTeacher, currentUser }) {
 			fetch(`students/${currentUser.id}/assignments`)
 			.then(res => res.json())
 			.then(data => setAssignments(data))
-		}
+		} 
 	}, [isTeacher, currentUser])
 
 	const studentAssignments = assignments.map(assignment => (

@@ -11,6 +11,7 @@ import Account from "./Account";
 import Roster from "./Roster";
 import StudentDashboard from "./StudentDashboard";
 import EditStudentInfo from "./EditStudentInfo";
+import SectionAssignments from "./SectionAssignments";
 
 function App() {
 
@@ -46,7 +47,7 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut} />
 			<Routes>
-				<Route path="/" element={<Home />}/>
+				<Route path="/" index element={<Home />}/>
 				<Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher}/>} />
 				<Route path="/login" element={<Login setCurrentUser={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher} />} />
 			</Routes>
@@ -57,11 +58,11 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut}/>
 			<Routes>
-				<Route path="/" element={<TeacherDashboard currentUser={currentUser} />}>
+				<Route path="/" index element={<TeacherDashboard currentUser={currentUser} />}>
 				</Route>
 				<Route path="/new-student-form" element={<NewStudentForm />} />
 				<Route path="/account" element={<Account currentUser={currentUser} />} />
-				<Route path="/assignments" element={<Assignments isTeacher={isTeacher} currentUser={currentUser}/>} />
+				<Route path="/assignments/:section_id" element={<SectionAssignments isTeacher={isTeacher} currentUser={currentUser}/>} />
 				<Route path="/roster" >
 					<Route path=":section_id" element={<Roster />} />
 				</Route>
@@ -74,7 +75,7 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut}/>
 			<Routes>
-				<Route path='/' element={<StudentDashboard currentUser={currentUser}/>} />
+				<Route path='/' index element={<StudentDashboard currentUser={currentUser}/>} />
 				<Route path="/assignments" element={<Assignments isTeacher={isTeacher} currentUser={currentUser} />} />
 				<Route path="/edit-info" element={<EditStudentInfo currentUser={currentUser} />} />
 			</Routes>

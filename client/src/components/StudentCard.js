@@ -1,6 +1,6 @@
 import React from 'react'
 
-function StudentCard({ first_name, last_name, grade_level, preferred_name, pronouns, private_pronouns, extra_info }) {
+function StudentCard({ first_name, last_name, grade_level, preferred_name, pronouns, private_pronouns, extra_info, id }) {
 
    return (
       <div className="p-6 min-w-lg bg-slate-300 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-6 ml-auto mr-auto">
@@ -10,8 +10,9 @@ function StudentCard({ first_name, last_name, grade_level, preferred_name, prono
          <p className="font-medium text-black mb-3 dark:text-gray-400" >
             {private_pronouns ? null : pronouns}
          </p>
+         <p className="font-medium text-black mb-3 dark:text-gray-400" >ID Number: {id}</p>
          <p className="font-medium text-black mb-3 dark:text-gray-400" >Grade Level: {grade_level}</p>
-         <p className="font-medium text-black mb-3 dark:text-gray-400" >Extra Info: {extra_info}</p>
+         <p className="font-medium text-black mb-3 dark:text-gray-400" >Extra Info: <br/> {extra_info}</p>
       </div>
    )
 }

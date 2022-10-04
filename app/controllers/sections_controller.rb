@@ -36,6 +36,12 @@ class SectionsController < ApplicationController
       render json: students
    end
 
+   def teacher_gradebook
+      section = @current_user.sections.find(params[:id])
+      assignments = section.assignments.order("due_date")
+      render json: assignments
+   end
+
    private
 
    def section_params
