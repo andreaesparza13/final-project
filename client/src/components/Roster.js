@@ -13,7 +13,9 @@ function Roster() {
    useEffect(() => {
       fetch(`/sections/${section_id}/students`)
       .then(res => res.json())
-      .then(data => setStudents(data))
+      .then(data => {
+         setStudents(data)
+      })
    }, [section_id]) 
 
    const classRoster = students.map(student => (
@@ -34,7 +36,8 @@ function Roster() {
          setShowForm(!showForm)
       }
 
-      function handleSubmit() {
+      function handleSubmit(e) {
+         e.preventDefault()
          fetch("section_student_joins", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },

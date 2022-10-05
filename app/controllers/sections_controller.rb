@@ -1,8 +1,8 @@
 class SectionsController < ApplicationController
-   # before_action :is_teacher?, only: [:create, :update, :destroy]
    
    def index 
-      render json: @current_user.sections
+      sections = @current_user.sections.order("period")
+      render json: sections
    end
 
    def show
@@ -22,7 +22,7 @@ class SectionsController < ApplicationController
    end
 
    def destroy
-      if @current_user.admin?
+      if @current_user
          section = Section.find(params[:id])
          section.destroy
       else
@@ -45,7 +45,7 @@ class SectionsController < ApplicationController
    private
 
    def section_params
-      params.permit(:period, :subject)
+      params.permit(:period, :subject, :teacher_id)
    end
 
 end

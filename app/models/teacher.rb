@@ -1,5 +1,5 @@
 class Teacher < ApplicationRecord
-   has_many :sections
+   has_many :sections, dependent: :destroy
    # has_many :section_student_joins, through: :sections
    # has_many :students, through: :sections
 

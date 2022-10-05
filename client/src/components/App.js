@@ -18,6 +18,14 @@ function App() {
 		localStorage.getItem('is-teacher') === 'true',
 	)
 	const [currentUser, setCurrentUser] = useState(null)
+
+	// const isTeacher = localStorage.getItem('is-teacher')
+	// localStorage.setItem('is-teacher', true)
+
+	// function setIsTeacher(bool) {
+	// 	localStorage.setItem('is-teacher', bool)
+	// 	console.log(isTeacher)
+	// }
 		
 	useEffect(() => {
 		const endpoint = isTeacher ? 'teacher' : 'student'
@@ -25,12 +33,12 @@ function App() {
 		.then(res => {
 			if(res.ok) {
 				res.json().then(user => {
-					// console.log(user)
+					console.log(user)
 					setCurrentUser(user)
 				})
 			}
 		})
-	}, [isTeacher]) 
+	}, [isTeacher])
 
 	useEffect(() => {
 		localStorage.setItem('is-teacher', isTeacher)
@@ -47,7 +55,7 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut} />
 			<Routes>
-				<Route path="*" element={<Home />}/>
+				<Route path="/" element={<Home />}/>
 				<Route path="signup" element={<Signup setCurrentUser={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher}/>} />
 				<Route path="login" element={<Login setCurrentUser={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher} />} />
 			</Routes>
@@ -58,12 +66,10 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut}/>
 			<Routes>
-				<Route path="*" element={<TeacherDashboard currentUser={currentUser} />} />
+				<Route path="/" element={<TeacherDashboard currentUser={currentUser} />} />
 				<Route path="account" element={<Account currentUser={currentUser} />} />
 				<Route path="assignments/:section_id" element={<SectionAssignments isTeacher={isTeacher} currentUser={currentUser}/>} />
-				<Route path="roster" >
-					<Route path=":section_id" element={<Roster />} />
-				</Route>
+				<Route path="roster/:section_id" element={<Roster />} />
 			</Routes>
 		</div>
 	);
@@ -72,7 +78,7 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut}/>
 			<Routes>
-				<Route path="*" element={<StudentDashboard currentUser={currentUser}/>} />
+				<Route path="/" element={<StudentDashboard currentUser={currentUser}/>} />
 				<Route path="assignments" element={<Assignments isTeacher={isTeacher} currentUser={currentUser} />} />
 				<Route path="edit-info" element={<EditStudentInfo currentUser={currentUser} />} />
 			</Routes>

@@ -3,7 +3,11 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'subtle': "url('https://www.toptal.com/designers/subtlepatterns/uploads/light-grey-terrazzo.png')"
+      },
+    },
   },
   plugins: [],
 }

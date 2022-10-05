@@ -10,8 +10,6 @@ Rails.application.routes.draw do
   post '/login_teacher', to: "sessions#create"
   get "/teacher", to: "teachers#show"
 
-  # get '/teachers/:id/sections', to: "teachers#teacher_sections"
-
   get '/sections/:id/students', to: "sections#roster"
 
   get 'students/:id/sections', to: "students#schedule"
