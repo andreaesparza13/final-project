@@ -1,5 +1,4 @@
 class AssignmentsController < ApplicationController
-   before_action :is_teacher?, only: [:update, :create, :destroy]
 
    def index 
       render json: Assignment.all 
@@ -29,7 +28,7 @@ class AssignmentsController < ApplicationController
    private
 
    def assignment_params
-      params.permit(:title, :due_date, :turned_in, :score, :priority)
+      params.permit(:title, :due_date, :section_id)
    end
 
 end

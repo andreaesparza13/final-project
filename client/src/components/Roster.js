@@ -38,12 +38,11 @@ function Roster() {
          fetch("section_student_joins", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ studentId, section_id })
+            body: JSON.stringify({ student_id: studentId, section_id: section_id })
          }
          .then(res => {
             if (res.ok) {
-               res.json()
-               .then(data => setStudents([...students, data]))
+               res.json().then(data => setStudents(students => [...students, data]))
             }
          })
       )}

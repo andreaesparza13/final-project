@@ -41,11 +41,6 @@ function NavBar({ currentUser, handleLogOut }) {
             <div className="lg:flex flex-grow items-center" id="example-navbar-warning">
                <ul className="flex flex-col lg:flex-row list-none ml-auto">
                   <li className="nav-item">
-                     <NavLink to='/assignments' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
-                     Assignments
-                     </NavLink>
-                  </li>
-                  <li className="nav-item">
                      <NavLink to='/account' className="px-3 py-2 flex items-center text-md uppercase font-bold leading-snug text-white hover:opacity-75">
                      Account
                      </NavLink>

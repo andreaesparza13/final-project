@@ -17,9 +17,6 @@ function Assignments({ isTeacher, currentUser }) {
 			<AssignmentCard 
 				title = {assignment.title}
 				due_date = {assignment.due_date}
-				turned_in = {assignment.turned_in}
-				score = {assignment.score}
-				priority = {assignment.priority}
 				period = {assignment.section.period}
 				subject = {assignment.section.subject}
 				key = {assignment.id}

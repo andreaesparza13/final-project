@@ -6,7 +6,7 @@ class StudentsController < ApplicationController
    end
 
    def show
-      render json: @current_student, include: ["assignments"]
+      render json: @current_student
    end
 
    def update
@@ -28,7 +28,8 @@ class StudentsController < ApplicationController
 
    def student_gradebook
       student = Student.find(params[:id])
-      render json: student.assignments
+      assignments = student.assignments.order("due_date")
+      render json: assignments
    end
 
    def schedule

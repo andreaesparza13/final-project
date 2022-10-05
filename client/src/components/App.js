@@ -5,7 +5,6 @@ import Home from "./Home";
 import Signup from "./Signup";
 import Login from "./Login";
 import TeacherDashboard from "./TeacherDashboard";
-import NewStudentForm from "./EditStudentInfo";
 import Assignments from "./Assignments";
 import Account from "./Account";
 import Roster from "./Roster";
@@ -26,11 +25,12 @@ function App() {
 		.then(res => {
 			if(res.ok) {
 				res.json().then(user => {
+					// console.log(user)
 					setCurrentUser(user)
 				})
 			}
 		})
-	}, []) // eslint-disable-line react-hooks/exhaustive-deps
+	}, [isTeacher]) 
 
 	useEffect(() => {
 		localStorage.setItem('is-teacher', isTeacher)
@@ -47,9 +47,9 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut} />
 			<Routes>
-				<Route path="/" index element={<Home />}/>
-				<Route path="/signup" element={<Signup setCurrentUser={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher}/>} />
-				<Route path="/login" element={<Login setCurrentUser={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher} />} />
+				<Route path="*" element={<Home />}/>
+				<Route path="signup" element={<Signup setCurrentUser={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher}/>} />
+				<Route path="login" element={<Login setCurrentUser={setCurrentUser} isTeacher={isTeacher} setIsTeacher={setIsTeacher} />} />
 			</Routes>
 		</div>
 	)
@@ -58,15 +58,12 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut}/>
 			<Routes>
-				<Route path="/" index element={<TeacherDashboard currentUser={currentUser} />}>
-				</Route>
-				<Route path="/new-student-form" element={<NewStudentForm />} />
-				<Route path="/account" element={<Account currentUser={currentUser} />} />
-				<Route path="/assignments/:section_id" element={<SectionAssignments isTeacher={isTeacher} currentUser={currentUser}/>} />
-				<Route path="/roster" >
+				<Route path="*" element={<TeacherDashboard currentUser={currentUser} />} />
+				<Route path="account" element={<Account currentUser={currentUser} />} />
+				<Route path="assignments/:section_id" element={<SectionAssignments isTeacher={isTeacher} currentUser={currentUser}/>} />
+				<Route path="roster" >
 					<Route path=":section_id" element={<Roster />} />
 				</Route>
-				{/* <Route path="roster/:section_id" element={<Roster />} /> */}
 			</Routes>
 		</div>
 	);
@@ -75,9 +72,9 @@ function App() {
 		<div>
 			<NavBar currentUser={currentUser} handleLogOut={handleLogOut}/>
 			<Routes>
-				<Route path='/' index element={<StudentDashboard currentUser={currentUser}/>} />
-				<Route path="/assignments" element={<Assignments isTeacher={isTeacher} currentUser={currentUser} />} />
-				<Route path="/edit-info" element={<EditStudentInfo currentUser={currentUser} />} />
+				<Route path="*" element={<StudentDashboard currentUser={currentUser}/>} />
+				<Route path="assignments" element={<Assignments isTeacher={isTeacher} currentUser={currentUser} />} />
+				<Route path="edit-info" element={<EditStudentInfo currentUser={currentUser} />} />
 			</Routes>
 		</div>
 	)

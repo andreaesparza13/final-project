@@ -23,14 +23,14 @@ c7 = Section.create(period: 6, subject: "Science", teacher: t4)
 c8 = Section.create(period: 4, subject: "Art", teacher: t5)
 
 puts "seeding assignments..."
-a1 = Assignment.create(title: "New Student Form", due_date: Date.today, turned_in: false, score: nil, priority: false, section: c1, student: s1)
-a2 = Assignment.create(title: "Homework 1", due_date: Date.today, turned_in: false, score: nil, priority: false, section: c1, student: s1)
-a3 = Assignment.create(title: "Homework 2", due_date: Date.yesterday, turned_in: true, score: 88, priority: false, section: c2, student: s2)
-a4 = Assignment.create(title: "Test 1", due_date: Date.tomorrow, turned_in: false, score: nil, priority: true, section: c1, student: s4)
-a5 = Assignment.create(title: "Project 1", due_date: Date.tomorrow, turned_in: false, score: nil, priority: false, section: c8, student: s5)
-a6 = Assignment.create(title: "Test 2", due_date: Date.today, turned_in: false, score: nil, priority: true, section: c2, student: s3)
+a1 = Assignment.create(title: "New Student Form", due_date: Date.today, section: c1)
+a2 = Assignment.create(title: "Homework 1", due_date: Date.today, section: c1)
+a3 = Assignment.create(title: "Homework 2", due_date: Date.yesterday, section: c2)
+a4 = Assignment.create(title: "Test 1", due_date: Date.tomorrow, section: c1)
+a5 = Assignment.create(title: "Project 1", due_date: Date.tomorrow, section: c8)
+a6 = Assignment.create(title: "Test 2", due_date: Date.today, section: c2)
 
-puts "seeding join table..."
+puts "seeding section-student-join table..."
 ssj1 = SectionStudentJoin.create(section: c1, student: s1)
 ssj2 = SectionStudentJoin.create(section: c1, student: s2)
 ssj3 = SectionStudentJoin.create(section: c1, student: s3)
@@ -38,5 +38,21 @@ ssj4 = SectionStudentJoin.create(section: c2, student: s4)
 ssj5 = SectionStudentJoin.create(section: c2, student: s5)
 ssj6 = SectionStudentJoin.create(section: c6, student: s5)
 ssj7 = SectionStudentJoin.create(section: c8, student: s1)
+
+puts "seeding assignment-student-join table"
+asj1 = AssignmentStudentJoin.create(assignment: a1, student: s1)
+asj2 = AssignmentStudentJoin.create(assignment: a1, student: s2)
+asj3 = AssignmentStudentJoin.create(assignment: a1, student: s3)
+asj4 = AssignmentStudentJoin.create(assignment: a1, student: s4)
+asj5 = AssignmentStudentJoin.create(assignment: a2, student: s2)
+asj6 = AssignmentStudentJoin.create(assignment: a2, student: s5)
+asj7 = AssignmentStudentJoin.create(assignment: a3, student: s5)
+asj8 = AssignmentStudentJoin.create(assignment: a4, student: s1)
+asj9 = AssignmentStudentJoin.create(assignment: a5, student: s2)
+asj10 = AssignmentStudentJoin.create(assignment: a6, student: s4)
+asj12 = AssignmentStudentJoin.create(assignment: a6, student: s1)
+asj13 = AssignmentStudentJoin.create(assignment: a3, student: s4)
+asj14 = AssignmentStudentJoin.create(assignment: a6, student: s4)
+asj15 = AssignmentStudentJoin.create(assignment: a6, student: s4)
 
 puts "...done"

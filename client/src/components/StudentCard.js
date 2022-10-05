@@ -8,7 +8,8 @@ function StudentCard({ first_name, last_name, grade_level, preferred_name, prono
             {preferred_name ? preferred_name : first_name} {last_name}
          </h5>
          <p className="font-medium text-black mb-3 dark:text-gray-400" >
-            {private_pronouns ? null : pronouns}
+            {pronouns} <br/>
+            {private_pronouns ? "KEEP PRIVATE" : null}
          </p>
          <p className="font-medium text-black mb-3 dark:text-gray-400" >ID Number: {id}</p>
          <p className="font-medium text-black mb-3 dark:text-gray-400" >Grade Level: {grade_level}</p>
