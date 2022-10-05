@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
-import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
+import './index.css'
+// import Signup from './components/teacher-stuff/Signup';
+// import Login from './components/teacher-stuff/Login';
+// import TeacherDashboard from './components/teacher-stuff/TeacherDashboard';
+// import Roster from './components/Roster';
+// import SectionAssignments from './components/teacher-stuff/SectionAssignments';
 // import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom'
 // import ErrorPage from './ErrorPage';
-// import Roster from './components/Roster';
-// import SectionAssignments from './components/SectionAssignments';
+// import Account from './components/teacher-stuff/Account';
+// import StudentDashboard from './components/StudentDashboard';
+// import Assignments from './components/student-stuff/Assignments';
+// import EditStudentInfo from './components/student-stuff/EditStudentInfo';
 
 // const router = createBrowserRouter([
 //   {
@@ -16,12 +23,42 @@ import App from './components/App';
 //     errorElement: <ErrorPage />,
 //     children: [
 //       {
-//         path: "roster/:section_id",
-//         element: <Roster />
+//         path: "signup",
+//         element: <Signup />
 //       },
 //       {
-//         path: "assignments/:section_id",
-//         element: <SectionAssignments />
+//         path: "login",
+//         element: <Login />
+//       },
+//       {
+//         path: "teacher",
+//         element: <TeacherDashboard />,
+//         children: [
+//           {
+//           path: "roster/:section_id",
+//           element: <Roster />
+//           },
+//           {
+//             path: "assignments/:section_id",
+//             element: <SectionAssignments />
+//           }
+//         ]
+//       },
+//       {
+//         path: "account",
+//         element: <Account />
+//       },
+//       {
+//         path: "student",
+//         element: <StudentDashboard />
+//       },
+//       {
+//         path: "assignments",
+//         element: <Assignments />
+//       },
+//       {
+//         path: "edit-info",
+//         element: <EditStudentInfo />
 //       }
 //     ]
 //   }
