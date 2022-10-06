@@ -24,9 +24,12 @@ function Assignments({ isTeacher, currentUser }) {
 	))
 
 	return (
+		<div className="bg-[url('https://www.toptal.com/designers/subtlepatterns/uploads/light-grey-terrazzo.png')] min-h-screen w-full bg-center m-0">
+         <br/>
 			<div className="flex flex-wrap justify-center">
 				{studentAssignments}
 			</div>
+		</div>
 	)
 }
 

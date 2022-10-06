@@ -7,10 +7,13 @@ function AssignmentCard({ title, due_date, period, subject }) {
 
    function handleTurnIn() {
       setTurnedIn(!turnedIn)
+      setPriority(false)
    }
 
    function handlePriority() {
+      if (turnedIn === false) {
       setPriority(!priority)
+      }
    }
 
    const divProperties = priority ? "p-6 min-w-lg bg-red-300 rounded-lg border border-red-200 shadow-md dark:bg-red-800 dark:border-red-700 m-6 ml-auto mr-auto" : "p-6 min-w-lg bg-slate-300 rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 m-6 ml-auto mr-auto"

@@ -26,11 +26,14 @@ function EditStudentInfo({ currentUser }) {
 				setPreferredName(`${preferred_name}`)
 				setExtraInfo(`${extra_info}`)
 				alert("Your information has been updated.")
+				window.location.reload()
 			}
 		})
 	}
 
 	return (
+		<div className="bg-[url('https://www.toptal.com/designers/subtlepatterns/uploads/light-grey-terrazzo.png')] min-h-screen w-full bg-center m-0">
+         <br/>
 		<form onSubmit={submitEditInfo} className="m-2 flex flex-col justify-center items-center ml-auto mr-auto w-96 border-4 bg-white">
 			<h1 className="p-4 text-xl font-extrabold text-slate-700">Update Personal Information</h1>
 			<div className="mb-4 w-72">
@@ -101,6 +104,7 @@ function EditStudentInfo({ currentUser }) {
 				Update
 			</button>
 		</form>
+		</div>
   )
 }
 

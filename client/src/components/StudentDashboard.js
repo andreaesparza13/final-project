@@ -20,8 +20,10 @@ function StudentDashboard({ currentUser }) {
 	))
 
 	return (
+		<div className="bg-subtle min-h-screen w-full bg-center m-0">
 		<div className="flex flex-wrap justify-center">
 			{schedule}
+		</div>
 		</div>
 	)
 }

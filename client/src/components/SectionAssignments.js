@@ -49,12 +49,12 @@ function SectionAssignments({ currentUser }) {
    ))
 
    return (
-      <>
+      <div className="bg-subtle min-h-screen w-full bg-center m-0">
          <div className='flex flex-wrap justify-center'>
             {assignmentsBySection}
          </div>
-         <div className="flex flex-wrap justify-center">
-            <button className="text-slate-500 border border-slate-500 hover:bg-slate-500 hover:text-white active:bg-slate-600 font-bold uppercase text-xs px-4 py-2 mr-2 rounded outline-none focus:outline-none ease-linear transition-all duration-150" onClick={toggleForm}>
+         {/* <div className="flex flex-wrap justify-center">
+            <button className="text-slate-500 border border-slate-500 hover:bg-slate-500 hover:text-white active:bg-slate-600 font-bold uppercase text-xs px-4 py-2 mr-2 rounded bg-white outline-none focus:outline-none ease-linear transition-all duration-150" onClick={toggleForm}>
                Add Assignment
             </button>
          </div>
@@ -73,12 +73,6 @@ function SectionAssignments({ currentUser }) {
                      <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" value={title} onChange={e => setTitle(e.target.value)}/>
                      </label>
                   </div>
-                  {/* <div className="mb-4 w-64">
-                     <label className="block text-slate-700 text-sm font-bold mb-2">
-                        Due Date: 
-                     <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" datepicker type="text" value={due_date} onChange={e => setDueDate(e.target.value)}/>
-                     </label>
-                  </div> */}
                   <div className="relative">
                   <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
                      <svg aria-hidden="true" className="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"></path></svg>
@@ -93,8 +87,8 @@ function SectionAssignments({ currentUser }) {
                   </div>
                </form> 
                : null}
-         </div>
-      </>
+         </div> */}
+      </div>
    )
 }
 

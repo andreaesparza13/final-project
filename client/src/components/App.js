@@ -18,14 +18,6 @@ function App() {
 		localStorage.getItem('is-teacher') === 'true',
 	)
 	const [currentUser, setCurrentUser] = useState(null)
-
-	// const isTeacher = localStorage.getItem('is-teacher')
-	// localStorage.setItem('is-teacher', true)
-
-	// function setIsTeacher(bool) {
-	// 	localStorage.setItem('is-teacher', bool)
-	// 	console.log(isTeacher)
-	// }
 		
 	useEffect(() => {
 		const endpoint = isTeacher ? 'teacher' : 'student'
@@ -38,7 +30,7 @@ function App() {
 				})
 			}
 		})
-	}, [isTeacher])
+	}, [])
 
 	useEffect(() => {
 		localStorage.setItem('is-teacher', isTeacher)

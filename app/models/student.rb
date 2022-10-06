@@ -4,7 +4,7 @@ class Student < ApplicationRecord
    has_many :assignments, through: :assignment_student_joins
    has_many :sections, through: :section_student_joins
 
-   validates :first_name, :last_name, :grade_level, presence: true
+   validates :first_name, :last_name, presence: true
    validates :username, presence: true, uniqueness: true
 
    has_secure_password

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 function ClassCard({ subject, period, id }) {
 
    function handleDeleteClass() {
+      console.log("id", id)
       fetch(`sections/${id}`, {
          method: 'DELETE',
          headers: {'Content-Type': 'application/json'}
@@ -11,6 +12,7 @@ function ClassCard({ subject, period, id }) {
       .then(res => {
          if (res.ok) {
             handleDeleteClass(id)
+            window.location.reload()
          }
       })
    }
