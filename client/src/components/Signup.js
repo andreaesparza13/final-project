@@ -51,7 +51,7 @@ function Signup({ isTeacher, setIsTeacher, setCurrentUser }) {
                <input 
                   type="text" 
                   placeholder="First Name" 
-                  name="frist_name" 
+                  name="first_name" 
                   value={first_name} 
                   onChange={e => setFirstName(e.target.value)} 
                   className="px-3 py-3 placeholder-slate-300 text-slate-600 relative bg-white rounded text-sm border-0 shadow outline-none focus:outline-none focus:ring w-full"
