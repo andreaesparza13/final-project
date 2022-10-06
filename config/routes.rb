@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :assignment_student_joins, only: [:create, :destroy]
-  resources :section_student_joins, only: [:create]
+  resources :section_student_joins, only: [:create, :destroy]
   resources :assignments, only: [:index, :show, :create, :destroy, :update]
   resources :sections, only: [:index, :show, :create, :destroy, :update]
   resources :students, only: [:index, :destroy, :update]

@@ -8,7 +8,7 @@ function Roster() {
    const section_id = parseInt(params.section_id)
    const [students, setStudents] = useState([])
    const [showForm, setShowForm] = useState(false)
-   const [studentId, setStudentId] = useState(0) // eslint-disable-line
+   const [student_id, setStudentId] = useState(0) // eslint-disable-line
 
    useEffect(() => {
       fetch(`/sections/${section_id}/students`)
@@ -41,7 +41,7 @@ function Roster() {
          fetch("section_student_joins", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ student_id: studentId, section_id: section_id })
+            body: JSON.stringify({ student_id, section_id })
          }
          .then(res => {
             if (res.ok) {
@@ -73,7 +73,7 @@ function Roster() {
                   <label className="block text-slate-700 text-sm font-bold mb-2" htmlFor="student-id">
                      Student ID: 
                   </label>
-                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" id="student-id" value={studentId} onChange={e => setStudentId(e.target.value)}/>
+                  <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="number" id="student-id" value={student_id} onChange={e => setStudentId(e.target.value)}/>
                </div>
                <div>
                   <button className="text-slate-500 border border-slate-500 hover:bg-slate-500 hover:text-white active:bg-slate-600 font-bold uppercase text-xs px-4 py-2 mb-5 rounded outline-none focus:outline-none ease-linear transition-all duration-150" type="submit">

@@ -44,6 +44,7 @@ ssj10 = SectionStudentJoin.create(section: c8, student: s3)
 ssj11 = SectionStudentJoin.create(section: c8, student: s4)
 ssj12 = SectionStudentJoin.create(section: c8, student: s5)
 ssj13 = SectionStudentJoin.create(section: c8, student: s6)
+ssj13 = SectionStudentJoin.create(section: c3, student: s6)
 
 puts "seeding assignment-student-join table"
 asj1 = AssignmentStudentJoin.create(assignment: a1, student: s1)

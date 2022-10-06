@@ -5,6 +5,11 @@ class SectionStudentJoinsController < ApplicationController
       render json: join, status: :ok
    end
 
+   def destroy
+      join = SectionStudentJoin.find(params[:id])
+      join.destroy
+   end
+
    private
 
    def join_params

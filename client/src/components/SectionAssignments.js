@@ -29,7 +29,7 @@ function SectionAssignments({ currentUser }) {
       fetch("assignments", {
          method: 'POST',
          headers: { "Content-Type": "application/json" },
-         body: JSON.stringify({ section_id: section_id })
+         body: JSON.stringify({ section_id, title, due_date })
       }
       .then(res => {
          if (res.ok) {
