@@ -8,7 +8,7 @@ function Roster() {
    const section_id = parseInt(params.section_id)
    const [students, setStudents] = useState([])
    const [showForm, setShowForm] = useState(false)
-   const [student_id, setStudentId] = useState(0) // eslint-disable-line
+   const [student_id, setStudentId] = useState(0)
 
    useEffect(() => {
       fetch(`/sections/${section_id}/students`)
@@ -32,11 +32,11 @@ function Roster() {
          />
       ))
 
-      function toggleForm() { // eslint-disable-line
+      function toggleForm() {
          setShowForm(!showForm)
       }
 
-      function handleSubmit(e) { // eslint-disable-line
+      function handleSubmit(e) {
          e.preventDefault()
          fetch("section_student_joins", {
             method: 'POST',
@@ -55,7 +55,7 @@ function Roster() {
       <div className="flex flex-wrap justify-center">
          {classRoster}
       </div>
-      {/* <div className="flex flex-wrap justify-center">
+      <div className="flex flex-wrap justify-center">
          <button className="text-slate-500 border border-slate-500 hover:bg-slate-500 hover:text-white active:bg-slate-600 font-bold uppercase text-xs px-4 py-2 mr-2 bg-white rounded outline-none focus:outline-none ease-linear transition-all duration-150" onClick={toggleForm}>
 				Add Student
 			</button>
@@ -82,7 +82,7 @@ function Roster() {
                </div>
             </form> 
             : null}
-      </div> */}
+      </div>
       </div>
    )
 }

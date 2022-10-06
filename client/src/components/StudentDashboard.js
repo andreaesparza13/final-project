@@ -16,6 +16,7 @@ function StudentDashboard({ currentUser }) {
 		key = {period.id}
 		period = {period.period}
 		subject = {period.subject}
+		teacher = {period.teacher.name}
 	/>
 	))
 
