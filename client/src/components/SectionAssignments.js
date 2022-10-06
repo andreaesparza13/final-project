@@ -8,8 +8,8 @@ function SectionAssignments({ currentUser }) {
    const section_id = parseInt(params.section_id)
    const [assignments, setAssignments] = useState([])
    const [showForm, setShowForm] = useState(false)
-   const [title, setTitle] = useState("")
-   const [due_date, setDueDate] = useState("")
+   const [title, setTitle] = useState("") // eslint-disable-line
+   const [due_date, setDueDate] = useState("") // eslint-disable-line
 
 
    useEffect(() => {
@@ -20,11 +20,11 @@ function SectionAssignments({ currentUser }) {
       }
    }, [section_id, currentUser])
 
-   function toggleForm() {
+   function toggleForm() { // eslint-disable-line
       setShowForm(!showForm)
    }
 
-   function handleSubmit(e) {
+   function handleSubmit(e) { // eslint-disable-line
       e.preventDefault()
       fetch("assignments", {
          method: 'POST',

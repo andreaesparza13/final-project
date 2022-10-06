@@ -30,7 +30,7 @@ function App() {
 				})
 			}
 		})
-	}, [])
+	}, []) // eslint-disable-line react-hooks/exhaustive-deps
 
 	useEffect(() => {
 		localStorage.setItem('is-teacher', isTeacher)
