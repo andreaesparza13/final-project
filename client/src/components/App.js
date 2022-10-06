@@ -25,7 +25,6 @@ function App() {
 		.then(res => {
 			if(res.ok) {
 				res.json().then(user => {
-					console.log(user)
 					setCurrentUser(user)
 				})
 			}

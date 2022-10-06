@@ -1,7 +1,7 @@
 class CreateAssignments < ActiveRecord::Migration[7.0]
   def change
     create_table :assignments do |t|
-      t.string :title
+      t.text :title
       t.date :due_date
       t.boolean :turned_in
       t.float :score
